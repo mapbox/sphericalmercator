@@ -1,0 +1,10 @@
+{
+    "name": "sphericalmercator",
+    "version": "1.0.0",
+    "author": {
+      "name": "MapBox",
+      "url": "http://mapbox.com/",
+      "email": "info@mapbox.com"
+    },
+    "main": "./sphericalmercator"
+}
