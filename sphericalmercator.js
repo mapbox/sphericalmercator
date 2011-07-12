@@ -42,7 +42,7 @@ function SphericalMercator(options) {
 SphericalMercator.prototype.px = function(ll, zoom) {
     var d = this.zc[zoom];
     var f = Math.min(Math.max(Math.sin(D2R * ll[1]), -0.9999), 0.9999);
-    var x = Math.round(d + ll[0] * this.Bc[zoom]);
+    var x = Math.round(d + +ll[0] * this.Bc[zoom]);
     var y = Math.round(d + 0.5 * Math.log((1 + f) / (1 - f)) * (-this.Cc[zoom]));
     (x > this.Ac[zoom]) && (x = this.Ac[zoom]);
     (y > this.Ac[zoom]) && (y = this.Ac[zoom]);
@@ -75,8 +75,8 @@ SphericalMercator.prototype.bbox = function(x, y, zoom, tms_style, srs) {
     if (tms_style) {
         y = (Math.pow(2, zoom) - 1) - y;
     }
-    var ll = [x * this.size, (y + 1) * this.size]; // lower left
-    var ur = [(x + 1) * this.size, y * this.size]; // upper right
+    var ll = [x * this.size, (+y + 1) * this.size]; // lower left
+    var ur = [(+x + 1) * this.size, y * this.size]; // upper right
     var bbox = this.ll(ll, zoom).concat(this.ll(ur, zoom));
 
     // If web mercator requested reproject to 900913.
