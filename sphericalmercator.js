@@ -1,3 +1,5 @@
+var SphericalMercator = (function(){
+
 // Closures including constants and other precalculated values.
 var cache = {},
     EPSLN = 1.0e-10,
@@ -10,7 +12,6 @@ var cache = {},
 
 // SphericalMercator constructor: precaches calculations
 // for fast tile lookups.
-module.exports = SphericalMercator;
 function SphericalMercator(options) {
     options = options || {};
     this.size = options.size || 256;
@@ -159,3 +160,9 @@ SphericalMercator.prototype.inverse = function(xy) {
         ((Math.PI*0.5) - 2.0 * Math.atan(Math.exp(-xy[1] / A))) * R2D
     ];
 };
+
+return SphericalMercator;
+
+})();
+
+if (module && exports) module.exports = exports = SphericalMercator;
