@@ -165,4 +165,6 @@ return SphericalMercator;
 
 })();
 
-if (module && exports) module.exports = exports = SphericalMercator;
+if (typeof module !== 'undefined' && typeof exports !== 'undefined') {
+    module.exports = exports = SphericalMercator;
+}
