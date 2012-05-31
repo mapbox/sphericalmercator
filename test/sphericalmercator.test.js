@@ -1,5 +1,8 @@
-var sm = new (require('..')),
-    assert = require('assert');
+var assert = require('assert');
+var fs = require('fs');
+var path = require('path');
+var sm = new (require('..'));
+
 
 describe('Unit tests', function() {
 
@@ -56,4 +59,24 @@ it('extents', function() {
     );
 });
 
+});
+
+var bboxes = fs.readFileSync(path.join(__dirname, 'fixtures/bboxes.csv'), 'utf8').split("\n");
+bboxes = bboxes.slice(0, 10);
+
+describe('Conversion', function() {
+    bboxes.forEach(function(row) {
+        // ISO, WGS84, 900913
+        cols= row.split(',');
+        cols[1] = cols[1].split(' ');
+        cols[2] = cols[2].split(' ');
+
+        // TODO ALL TESTS FAIL - Decide on tolerance!
+        it('should convert ' + cols[0] + ' to 900913', function(){
+            assert.deepEqual(sm.convert(cols[1], '900913'), cols[2]);
+        });
+        it('should convert ' + cols[0] + ' to WGS84', function(){
+            assert.deepEqual(sm.convert(cols[2], 'WGS84'), cols[1]);
+        });
+    });
 });
