@@ -6,5 +6,8 @@
       "url": "http://mapbox.com/",
       "email": "info@mapbox.com"
     },
+    "scripts": {
+      "test": "mocha -R spec"
+    },
     "main": "./sphericalmercator"
 }
