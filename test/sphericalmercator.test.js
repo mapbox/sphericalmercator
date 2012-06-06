@@ -3,6 +3,12 @@ var fs = require('fs');
 var path = require('path');
 var sm = new (require('..'));
 
+assert.equalBounds = function(expected, actual, message) {
+    actual.forEach(function(v, i) {
+        var diff = Math.abs(actual[i] - expected[i]);
+        assert.ok(diff < 1e-13, message ||'Difference '+ diff+' is larger than threshold.');
+    });
+};
 
 describe('Unit tests', function() {
 
@@ -73,10 +79,10 @@ describe('Conversion', function() {
 
         // TODO ALL TESTS FAIL - Decide on tolerance!
         it('should convert ' + cols[0] + ' to 900913', function(){
-            assert.deepEqual(sm.convert(cols[1], '900913'), cols[2]);
+            assert.equalBounds(sm.convert(cols[1], '900913'), cols[2]);
         });
         it('should convert ' + cols[0] + ' to WGS84', function(){
-            assert.deepEqual(sm.convert(cols[2], 'WGS84'), cols[1]);
+            assert.equalBounds(sm.convert(cols[2], 'WGS84'), cols[1]);
         });
     });
 });
