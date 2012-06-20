@@ -6,5 +6,12 @@
       "url": "http://mapbox.com/",
       "email": "info@mapbox.com"
     },
-    "main": "./sphericalmercator"
+    "main": "./sphericalmercator",
+    "devDependencies": {
+      "mocha": "1.0.x"
+    },
+    "scripts": {
+      "pretest": "npm install --dev",
+      "test": "mocha"
+    }
 }
