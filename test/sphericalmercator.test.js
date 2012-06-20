@@ -48,10 +48,10 @@ it('extents', function() {
     );
     assert.deepEqual(
         sm.xyz([-240,-90,240,90],4,true,'WGS84'), {
-            minX: 0,
+            minX: -3,
             minY: 0,
             maxX: 15,
-            maxY: 15
+            maxY: 20
         },
         'Maximum extents enforced on conversion to tile ranges.'
     );
