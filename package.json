@@ -1,6 +1,14 @@
 {
     "name": "sphericalmercator",
+    "description": "Transformations between the Web Mercator projection and Latitude Longitude coordinates",
     "version": "1.0.1",
+    "licenses": [{ "type": "BSD" }],
+    "keywords": ["map", "projection", "transformations"],
+    "url": "http://github.com/mapbox/node-sphericalmercator",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/mapbox/node-sphericalmercator.git"
+    },
     "author": {
       "name": "MapBox",
       "url": "http://mapbox.com/",
