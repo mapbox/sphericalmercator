@@ -20,5 +20,8 @@
     "scripts": {
       "pretest": "npm install mocha",
       "test": "mocha"
+    },
+    "bin": {
+      "bbox": "bin/bbox.js"
     }
 }
