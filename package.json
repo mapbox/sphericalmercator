@@ -22,6 +22,9 @@
       "test": "mocha"
     },
     "bin": {
-      "bbox": "bin/bbox.js"
+      "bbox": "bin/bbox.js",
+      "xyz": "bin/xyz.js",
+      "to900913": "bin/to900913.js",
+      "toWgs84": "bin/toWgs84.js"
     }
 }
