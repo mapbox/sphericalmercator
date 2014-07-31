@@ -6,8 +6,8 @@ var cache = {},
     D2R = Math.PI / 180,
     R2D = 180 / Math.PI,
     // 900913 properties.
-    A = 6378137,
-    MAXEXTENT = 20037508.34;
+    A = 6378137.0,
+    MAXEXTENT = 20037508.342789244;
 
 
 // SphericalMercator constructor: precaches calculations

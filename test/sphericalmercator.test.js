@@ -1,6 +1,9 @@
 var sm = new (require('..')),
     assert = require('assert');
 
+var MAX_EXTENT_MERC = [-20037508.342789244,-20037508.342789244,20037508.342789244,20037508.342789244];
+var MAX_EXTENT_WGS84 = [-180,-85.0511287798066,180,85.0511287798066];
+
 it('bbox', function() {
     assert.deepEqual(
         sm.bbox(0,0,0,true,'WGS84'),
@@ -29,22 +32,19 @@ it('xyz', function() {
 
 it('convert', function() {
     assert.deepEqual(
-        sm.convert([-180,-85.05112877980659,180,85.0511287798066],'900913'),
-        [-20037508.34,-20037508.34,20037508.34,20037508.34],
-        'WGS84 converted to 900913.'
+        sm.convert(MAX_EXTENT_WGS84,'900913'),
+        MAX_EXTENT_MERC
     );
     assert.deepEqual(
-        sm.convert([-20037508.34,-20037508.34,20037508.34,20037508.34],'WGS84'),
-        [-179.99999997494382,-85.05112877764509,179.99999997494382,85.05112877764508],
-        '900913 converted to WGS84.'
+        sm.convert(MAX_EXTENT_MERC,'WGS84'),
+        MAX_EXTENT_WGS84
     );
 });
 
 it('extents', function() {
     assert.deepEqual(
         sm.convert([-240,-90,240,90],'900913'),
-        [-20037508.34,-20037508.34,20037508.34,20037508.34],
-        'Maximum extents enforced on conversion to 900913.'
+        MAX_EXTENT_MERC
     );
     assert.deepEqual(
         sm.xyz([-240,-90,240,90],4,true,'WGS84'), {
