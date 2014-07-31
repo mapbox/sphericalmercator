@@ -16,9 +16,9 @@
     },
     "main": "./sphericalmercator",
     "devDependencies": {
+      "mocha": "1.x",
     },
     "scripts": {
-      "pretest": "npm install mocha",
       "test": "mocha"
     },
     "bin": {
