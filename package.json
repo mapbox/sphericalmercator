@@ -16,7 +16,7 @@
     },
     "main": "./sphericalmercator",
     "devDependencies": {
-      "mocha": "1.x",
+      "mocha": "1.x"
     },
     "scripts": {
       "test": "mocha"
