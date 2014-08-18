@@ -58,3 +58,7 @@ Convert lon, lat values to mercator x, y
 ### `inverse(xy)`
 
 Convert mercator x, y values to lon, lat
+
+## See Also
+
+* [mercantile](https://github.com/sgillies/mercantile) provides similar utilities for projection and tile math in Python
