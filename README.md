@@ -20,7 +20,7 @@ var merc = new SphericalMercator({
 
 ### `px(ll, zoom)`
 
-Convert lat, lon to screen pixel x, y from 0, 0 origin, a certain zoom level.
+Convert lon, lat to screen pixel x, y from 0, 0 origin, a certain zoom level.
 The inverse of `ll`
 
 ### `ll(px, zoom)`
