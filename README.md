@@ -6,6 +6,10 @@ latitude/longitude.
 
 Compatible with nodejs packages and in-browser.
 
+## Installation
+
+`npm install sphericalmercator`
+
 ## API
 
 Datatypes are assumed to be arrays: lon, lat is `[lon, lat]`, and `x, y` is
