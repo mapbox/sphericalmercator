@@ -1,30 +1,38 @@
 {
-    "name": "sphericalmercator",
-    "description": "Transformations between the Web Mercator projection and Latitude Longitude coordinates",
-    "version": "1.0.2",
-    "licenses": [{ "type": "BSD" }],
-    "keywords": ["map", "projection", "transformations"],
-    "url": "http://github.com/mapbox/node-sphericalmercator",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/mapbox/node-sphericalmercator.git"
-    },
-    "author": {
-      "name": "MapBox",
-      "url": "http://mapbox.com/",
-      "email": "info@mapbox.com"
-    },
-    "main": "./sphericalmercator",
-    "devDependencies": {
-      "mocha": "1.x"
-    },
-    "scripts": {
-      "test": "mocha"
-    },
-    "bin": {
-      "bbox": "bin/bbox.js",
-      "xyz": "bin/xyz.js",
-      "to900913": "bin/to900913.js",
-      "to4326": "bin/to4326.js"
+  "name": "sphericalmercator",
+  "description": "Transformations between the Web Mercator projection and Latitude Longitude coordinates",
+  "version": "1.0.3",
+  "licenses": [
+    {
+      "type": "BSD"
     }
+  ],
+  "keywords": [
+    "map",
+    "projection",
+    "transformations"
+  ],
+  "url": "http://github.com/mapbox/node-sphericalmercator",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mapbox/node-sphericalmercator.git"
+  },
+  "author": {
+    "name": "MapBox",
+    "url": "http://mapbox.com/",
+    "email": "info@mapbox.com"
+  },
+  "main": "./sphericalmercator",
+  "devDependencies": {
+    "mocha": "1.x"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "bin": {
+    "bbox": "bin/bbox.js",
+    "xyz": "bin/xyz.js",
+    "to900913": "bin/to900913.js",
+    "to4326": "bin/to4326.js"
+  }
 }
