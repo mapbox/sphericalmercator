@@ -13,7 +13,7 @@ Compatible with nodejs packages and in-browser.
 ## API
 
 Datatypes are assumed to be arrays: lon, lat is `[lon, lat]`, and `x, y` is
-`[x, y]`.
+`[x, y]`. Note that the order is `[longitude, latitude]`, not the typical `[latitude, longitude]`.
 
 ```javascript
 // By default, precomputes up to z30
