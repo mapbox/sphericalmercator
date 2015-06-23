@@ -40,7 +40,7 @@ Convert tile xyz value to bbox of the form `[w, s, e, n]`
 * `y` {Number} y (latitude) number.
 * `zoom` {Number} zoom.
 * `tms_style` {Boolean} whether to compute using tms-style. (optional, default false)
-* `srs` {String} projection for resulting bbox (WGS84|900913). (optional, default 4326)
+* `srs` {String} projection for resulting bbox (WGS84|900913). (optional, default WGS84)
 
 Returns bbox array of values in form `[w, s, e, n]`.
 
@@ -51,9 +51,18 @@ Convert bbox to xyx bounds
 * `bbox` {Number} bbox in the form `[w, s, e, n]`.
 * `zoom` {Number} zoom.
 * `tms_style` {Boolean} whether to compute using tms-style. (optional, default false)
-* `srs` {String} projection of input bbox (WGS84|900913). (optional, default 4326)
+* `srs` {String} projection of input bbox (WGS84|900913). (optional, default WGS84)
 
 Returns {Object} XYZ bounds containing minX, maxX, minY, maxY properties.
+
+### `convert(bbox, to)`
+
+Convert bbox from 900913 to WGS84 or vice versa 
+
+* `bbox` {Number} bbox in the form `[w, s, e, n]`.
+* `to` {String} projection of resulting bbox (WGS84|900913). (optional, default WGS84)
+
+Returns bbox array of values in form `[w, s, e, n]`.
 
 ### `forward(ll)`
 
