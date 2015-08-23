@@ -46,7 +46,7 @@ Returns bbox array of values in form `[w, s, e, n]`.
 
 ### `xyz(bbox, zoom, tms_style, srs)`
 
-Convert bbox to xyx bounds
+Convert bbox to xyz bounds
 
 * `bbox` {Number} bbox in the form `[w, s, e, n]`.
 * `zoom` {Number} zoom.
