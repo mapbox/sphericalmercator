@@ -35,19 +35,20 @@ tape('xyz', function(assert) {
 tape('xyz-fuzz', function(assert) {
     for (var i = 0; i < 1000; i++) {
         var x = [-180 + (360*Math.random()), -180 + (360*Math.random())];
-        var y = [-85 + (190*Math.random()), -85 + (190*Math.random())];
+        var y = [-85 + (170*Math.random()), -85 + (170*Math.random())];
         var z = Math.floor(22*Math.random());
-        var xyz = sm.xyz([
+        var extent = [
             Math.min.apply(Math, x),
             Math.min.apply(Math, y),
             Math.max.apply(Math, x),
             Math.max.apply(Math, y)
-        ], z, true, 'WGS84');
+        ];
+        var xyz = sm.xyz(extent, z, true, 'WGS84');
         if (xyz.minX > xyz.maxX) {
-            assert.equal(xyz.minX <= xyz.maxX, true, 'x: ' + xyz.minX + ' <= ' + xyz.maxX);
+            assert.equal(xyz.minX <= xyz.maxX, true, 'x: ' + xyz.minX + ' <= ' + xyz.maxX + ' for ' + JSON.stringify(extent));
         }
         if (xyz.minY > xyz.maxY) {
-            assert.equal(xyz.minY <= xyz.maxY, true, 'y: ' + xyz.minY + ' <= ' + xyz.maxY);
+            assert.equal(xyz.minY <= xyz.maxY, true, 'y: ' + xyz.minY + ' <= ' + xyz.maxY + ' for ' + JSON.stringify(extent));
         }
     }
     assert.end();
