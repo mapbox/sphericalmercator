@@ -32,6 +32,14 @@ tape('xyz', function(assert) {
     assert.end();
 });
 
+tape('xyz-broken', function(assert) {
+    var extent = [ -0.087891, 40.95703, 0.087891, 41.044916 ]
+    var xyz = sm.xyz(extent, 3, true, 'WGS84');
+    assert.equal(xyz.minX <= xyz.maxX, true, 'x: ' + xyz.minX + ' <= ' + xyz.maxX + ' for ' + JSON.stringify(extent));
+    assert.equal(xyz.minY <= xyz.maxY, true, 'y: ' + xyz.minY + ' <= ' + xyz.maxY + ' for ' + JSON.stringify(extent));
+    assert.end();
+});
+
 tape('xyz-fuzz', function(assert) {
     for (var i = 0; i < 1000; i++) {
         var x = [-180 + (360*Math.random()), -180 + (360*Math.random())];
