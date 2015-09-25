@@ -24,7 +24,7 @@
   },
   "main": "./sphericalmercator",
   "devDependencies": {
-    "tape": "4.2.x"
+    "tape": "3.0.x"
   },
   "scripts": {
     "test": "tape test/*.test.js"
