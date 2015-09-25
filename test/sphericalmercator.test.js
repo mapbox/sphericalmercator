@@ -1,10 +1,10 @@
-var sm = new (require('..')),
-    assert = require('assert');
+var tape = require('tape');
+var sm = new (require('..'));
 
 var MAX_EXTENT_MERC = [-20037508.342789244,-20037508.342789244,20037508.342789244,20037508.342789244];
 var MAX_EXTENT_WGS84 = [-180,-85.0511287798066,180,85.0511287798066];
 
-it('bbox', function() {
+tape('bbox', function(assert) {
     assert.deepEqual(
         sm.bbox(0,0,0,true,'WGS84'),
         [-180,-85.05112877980659,180,85.0511287798066],
@@ -15,9 +15,10 @@ it('bbox', function() {
         [-180,-85.05112877980659,0,0],
         '[0,0,1] converted to proper bbox.'
     );
+    assert.end();
 });
 
-it('xyz', function() {
+tape('xyz', function(assert) {
     assert.deepEqual(
         sm.xyz([-180,-85.05112877980659,180,85.0511287798066],0,true,'WGS84'),
         {minX:0,minY:0,maxX:0, maxY:0},
@@ -28,9 +29,10 @@ it('xyz', function() {
         {minX:0,minY:0,maxX:0, maxY:0},
         'SW converted to proper tile ranges.'
     );
+    assert.end();
 });
 
-it('convert', function() {
+tape('convert', function(assert) {
     assert.deepEqual(
         sm.convert(MAX_EXTENT_WGS84,'900913'),
         MAX_EXTENT_MERC
@@ -39,9 +41,10 @@ it('convert', function() {
         sm.convert(MAX_EXTENT_MERC,'WGS84'),
         MAX_EXTENT_WGS84
     );
+    assert.end();
 });
 
-it('extents', function() {
+tape('extents', function(assert) {
     assert.deepEqual(
         sm.convert([-240,-90,240,90],'900913'),
         MAX_EXTENT_MERC
@@ -55,4 +58,5 @@ it('extents', function() {
         },
         'Maximum extents enforced on conversion to tile ranges.'
     );
+    assert.end();
 });

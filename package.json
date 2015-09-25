@@ -24,10 +24,10 @@
   },
   "main": "./sphericalmercator",
   "devDependencies": {
-    "mocha": "1.x"
+    "tape": "4.2.x"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "tape test/*.test.js"
   },
   "bin": {
     "bbox": "bin/bbox.js",
