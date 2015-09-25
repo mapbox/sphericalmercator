@@ -32,6 +32,27 @@ tape('xyz', function(assert) {
     assert.end();
 });
 
+tape('xyz-fuzz', function(assert) {
+    for (var i = 0; i < 1000; i++) {
+        var x = [-180 + (360*Math.random()), -180 + (360*Math.random())];
+        var y = [-85 + (190*Math.random()), -85 + (190*Math.random())];
+        var z = Math.floor(22*Math.random());
+        var xyz = sm.xyz([
+            Math.min.apply(Math, x),
+            Math.min.apply(Math, y),
+            Math.max.apply(Math, x),
+            Math.max.apply(Math, y)
+        ], z, true, 'WGS84');
+        if (xyz.minX > xyz.maxX) {
+            assert.equal(xyz.minX <= xyz.maxX, true, 'x: ' + xyz.minX + ' <= ' + xyz.maxX);
+        }
+        if (xyz.minY > xyz.maxY) {
+            assert.equal(xyz.minY <= xyz.maxY, true, 'y: ' + xyz.minY + ' <= ' + xyz.maxY);
+        }
+    }
+    assert.end();
+});
+
 tape('convert', function(assert) {
     assert.deepEqual(
         sm.convert(MAX_EXTENT_WGS84,'900913'),
