@@ -1,7 +1,7 @@
 {
   "name": "sphericalmercator",
   "description": "Transformations between the Web Mercator projection and Latitude Longitude coordinates",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "licenses": [
     {
       "type": "BSD"
