@@ -108,11 +108,13 @@ SphericalMercator.prototype.xyz = function(bbox, zoom, tms_style, srs) {
     var px_ll = this.px(ll, zoom);
     var px_ur = this.px(ur, zoom);
     // Y = 0 for XYZ is the top hence minY uses px_ur[1].
+    var x = [ Math.floor(px_ll[0] / this.size), Math.floor((px_ur[0] - 1) / this.size) ];
+    var y = [ Math.floor(px_ur[1] / this.size), Math.floor((px_ll[1] - 1) / this.size) ];
     var bounds = {
-        minX: Math.floor(px_ll[0] / this.size),
-        minY: Math.floor(px_ur[1] / this.size),
-        maxX: Math.floor((px_ur[0] - 1) / this.size),
-        maxY: Math.floor((px_ll[1] - 1) / this.size)
+        minX: Math.min.apply(Math, x),
+        minY: Math.min.apply(Math, y),
+        maxX: Math.max.apply(Math, x),
+        maxY: Math.max.apply(Math, y)
     };
     if (tms_style) {
         var tms = {
