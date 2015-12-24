@@ -12,7 +12,7 @@ Compatible with nodejs packages and in-browser.
 
 ## API
 
-Datatypes are assumed to be arrays: lon, lat is `[lon, lat]`, and `x, y` is
+Some datatypes are assumed to be arrays: `ll` is `[lon, lat]`, `xy` and `px` are
 `[x, y]`.
 
 ```javascript
@@ -57,7 +57,7 @@ Returns {Object} XYZ bounds containing minX, maxX, minY, maxY properties.
 
 ### `convert(bbox, to)`
 
-Convert bbox from 900913 to WGS84 or vice versa 
+Convert bbox from 900913 to WGS84 or vice versa
 
 * `bbox` {Number} bbox in the form `[w, s, e, n]`.
 * `to` {String} projection of resulting bbox (WGS84|900913). (optional, default WGS84)
