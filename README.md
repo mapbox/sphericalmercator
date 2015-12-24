@@ -44,6 +44,11 @@ Convert tile xyz value to bbox of the form `[w, s, e, n]`
 
 Returns bbox array of values in form `[w, s, e, n]`.
 
+### `bboxFromCenter(x, y, zoom, tms_style, srs)`
+
+Convert tile xyz value to bbox of the form `[w, s, e, n]`
+Like `bbox` above, but x, y are assumed to lie at the center of the bbox.
+
 ### `xyz(bbox, zoom, tms_style, srs)`
 
 Convert bbox to xyz bounds
@@ -57,7 +62,7 @@ Returns {Object} XYZ bounds containing minX, maxX, minY, maxY properties.
 
 ### `convert(bbox, to)`
 
-Convert bbox from 900913 to WGS84 or vice versa 
+Convert bbox from 900913 to WGS84 or vice versa
 
 * `bbox` {Number} bbox in the form `[w, s, e, n]`.
 * `to` {String} projection of resulting bbox (WGS84|900913). (optional, default WGS84)

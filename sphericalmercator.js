@@ -90,6 +90,13 @@ SphericalMercator.prototype.bbox = function(x, y, zoom, tms_style, srs) {
     }
 };
 
+// Convert tile xyz value to bbox of the form `[w, s, e, n]`
+// like bbox(x, y, zoom, tms_style, srs), but x,y are assumed to lie
+// at the center of the bbox
+SphericalMercator.prototype.bboxFromCenter = function(x, y, zoom, tms_style, srs) {
+    return this.bbox(x - 0.5, y - 0.5, zoom, tms_style, srs);
+};
+
 // Convert bbox to xyx bounds
 //
 // - `bbox` {Number} bbox in the form `[w, s, e, n]`.
