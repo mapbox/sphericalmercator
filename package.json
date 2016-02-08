@@ -24,10 +24,12 @@
   },
   "main": "./sphericalmercator",
   "devDependencies": {
-    "tape": "3.0.x"
+    "tape": "3.0.x",
+    "eslint": "~1.00.0",
+    "eslint-config-unstyled": "^1.1.0"
   },
   "scripts": {
-    "test": "tape test/*.test.js"
+    "test": "eslint sphericalmercator.js && tape test/*.test.js"
   },
   "bin": {
     "bbox": "bin/bbox.js",
