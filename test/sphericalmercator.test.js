@@ -40,6 +40,13 @@ tape('xyz-broken', function(assert) {
     assert.end();
 });
 
+tape('xyz-negative', function(assert) {
+    var extent = [-112.5, 85.0511, -112.5, 85.0511];
+    var xyz = sm.xyz(extent, 0);
+    assert.equal(xyz.minY, 0, 'returns zero for y value');
+    assert.end();
+});
+
 tape('xyz-fuzz', function(assert) {
     for (var i = 0; i < 1000; i++) {
         var x = [-180 + (360*Math.random()), -180 + (360*Math.random())];
@@ -81,10 +88,10 @@ tape('extents', function(assert) {
     );
     assert.deepEqual(
         sm.xyz([-240,-90,240,90],4,true,'WGS84'), {
-            minX: -3,
+            minX: 0,
             minY: 0,
             maxX: 15,
-            maxY: 20
+            maxY: 15
         },
         'Maximum extents enforced on conversion to tile ranges.'
     );
