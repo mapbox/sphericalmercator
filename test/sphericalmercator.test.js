@@ -97,3 +97,13 @@ tape('extents', function(assert) {
     );
     assert.end();
 });
+
+tape('px', function(assert) {
+    assert.deepEqual(
+        sm.px([-77.036556, 38.897708], 17),
+        [19193777, 25672129],
+        'returns pixel x/y of viewport, based on zoom level'
+    );
+
+    assert.end();
+});
