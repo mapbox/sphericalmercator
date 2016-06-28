@@ -25,7 +25,7 @@ tape('xyz', function(assert) {
         'World extents converted to proper tile ranges.'
     );
     assert.deepEqual(
-        sm.xyz([-180,-85.05112877980659,0,0],1,true,'WGS84'),
+        sm.xyz([-180,-85.05112877980659,/*0,0*/-0.000000001,-0.000000001],1,true,'WGS84'),
         {minX:0,minY:0,maxX:0, maxY:0},
         'SW converted to proper tile ranges.'
     );
@@ -35,6 +35,7 @@ tape('xyz', function(assert) {
 tape('xyz-broken', function(assert) {
     var extent = [ -0.087891, 40.95703, 0.087891, 41.044916 ]
     var xyz = sm.xyz(extent, 3, true, 'WGS84');
+    assert.deepEqual(xyz, { minX: 3, minY: 4, maxX: 4, maxY: 5 }, 'proper tile range');
     assert.equal(xyz.minX <= xyz.maxX, true, 'x: ' + xyz.minX + ' <= ' + xyz.maxX + ' for ' + JSON.stringify(extent));
     assert.equal(xyz.minY <= xyz.maxY, true, 'y: ' + xyz.minY + ' <= ' + xyz.maxY + ' for ' + JSON.stringify(extent));
     assert.end();
