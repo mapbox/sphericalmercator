@@ -90,7 +90,7 @@ tape('extents', function(assert) {
         sm.xyz([-240,-90,240,90],4,true,'WGS84'), {
             minX: 0,
             minY: 0,
-            maxX: 15,
+            maxX: 18,
             maxY: 15
         },
         'Maximum extents enforced on conversion to tile ranges.'

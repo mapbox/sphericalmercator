@@ -45,10 +45,10 @@ SphericalMercator.prototype.px = function(ll, zoom) {
     var f = Math.min(Math.max(Math.sin(D2R * ll[1]), -0.9999), 0.9999);
     var x = Math.round(d + ll[0] * this.Bc[zoom]);
     var y = Math.round(d + 0.5 * Math.log((1 + f) / (1 - f)) * (-this.Cc[zoom]));
-    (x > this.Ac[zoom]) && (x = this.Ac[zoom]);
+    // (x > this.Ac[zoom]) && (x = this.Ac[zoom]);
     (y > this.Ac[zoom]) && (y = this.Ac[zoom]);
     //(x < 0) && (x = 0);
-    //(y < 0) && (y = 0);
+    (y < 0) && (y = 0);
     return [x, y];
 };
 
