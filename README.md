@@ -75,3 +75,36 @@ Convert mercator x, y values to lon, lat
 ## See Also
 
 * [mercantile](https://github.com/sgillies/mercantile) provides similar utilities for projection and tile math in Python
+
+## Data types
+
+```
+┌───────────────────────────────────────────────┐
+│zoom-sensitive                                 │
+│                                               │
+│        ┌────────────────────────────┐         │
+│     ┌──│  screen pixel x, y + zoom  │◀─┐      │
+│     │  └────────────────────────────┘  │      │
+│     │                                  │      │
+│ll(xy, zoom)                      px(ll, zoom) │
+│     │                                  │      │
+│     │  ┌────────────────────────────┐  │      │
+│     └─▶│ longitude, latitude + zoom │──┘      │
+│        └────────────────────────────┘         │
+│                       │                       │
+└───────────────────────┼───────────────────────┘
+                        │                        
+                 throw away zoom                 
+                        │                        
+┌───────────────────────┼───────────────────────┐
+│zoom-free              ▼                       │
+│             ┌───────────────────┐             │
+│          ┌──│longitude, latitude│◀─┐          │
+│          │  └───────────────────┘  │          │
+│      forward(ll)             inverse(xy)      │
+│          │  ┌───────────────────┐  │          │
+│          └─▶│   mercator x, y   │──┘          │
+│             └───────────────────┘             │
+│                                               │
+└───────────────────────────────────────────────┘
+```
