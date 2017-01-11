@@ -40,11 +40,19 @@ function SphericalMercator(options) {
 //
 // - `ll` {Array} `[lon, lat]` array of geographic coordinates.
 // - `zoom` {Number} zoom level.
-SphericalMercator.prototype.px = function(ll, zoom) {
+SphericalMercator.prototype.px = function(ll, zoom, round) {
+    if(round === undefined) round = true;
+
     var d = this.zc[zoom];
     var f = Math.min(Math.max(Math.sin(D2R * ll[1]), -0.9999), 0.9999);
-    var x = Math.round(d + ll[0] * this.Bc[zoom]);
-    var y = Math.round(d + 0.5 * Math.log((1 + f) / (1 - f)) * (-this.Cc[zoom]));
+    var x = d + ll[0] * this.Bc[zoom];
+    var y = d + 0.5 * Math.log((1 + f) / (1 - f)) * (-this.Cc[zoom]);
+    
+    if(round) {
+        x = Math.round(x);
+        y = Math.round(y);
+    }
+
     (x > this.Ac[zoom]) && (x = this.Ac[zoom]);
     (y > this.Ac[zoom]) && (y = this.Ac[zoom]);
     //(x < 0) && (x = 0);

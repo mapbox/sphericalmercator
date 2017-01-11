@@ -81,6 +81,25 @@ tape('convert', function(assert) {
     assert.end();
 });
 
+tape('px', function(assert) {
+    assert.deepEqual(
+        sm.px([-122,36], 0),
+        [ 41, 101 ]
+    );
+
+    assert.deepEqual(
+        sm.px([-122,36], 0, false),
+        [ 41.24444444444444, 100.52754553089112 ]
+    );
+
+    assert.deepEqual(
+        sm.px([122,36], 0),
+        [ 215, 101 ]
+    );
+    
+    assert.end();
+});
+
 tape('extents', function(assert) {
     assert.deepEqual(
         sm.convert([-240,-90,240,90],'900913'),
