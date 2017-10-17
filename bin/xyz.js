@@ -9,7 +9,7 @@ function usage() {
 process.argv.shift(); // drop the `node`
 process.argv.shift(); // drop the `path to executable`
 
-if (process.argv.length < 5) return usage();
+if (process.argv.length < 5) {return usage()};
 
 var w = process.argv.shift();
 var s = process.argv.shift();
