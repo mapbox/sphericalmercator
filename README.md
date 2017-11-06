@@ -8,7 +8,7 @@ Compatible with nodejs packages and in-browser.
 
 ## Installation
 
-`npm install sphericalmercator`
+`npm install @mapbox/sphericalmercator`
 
 ## API
 
