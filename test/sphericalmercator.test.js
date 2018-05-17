@@ -98,25 +98,15 @@ tape('extents', function(assert) {
     assert.end();
 });
 
-var LL_TEST_VALUE = [200,200]
-var PX_TEST_VALUE = [-179,85]
-var ZOOM_INT_TEST_VALUE = 9
-var ZOOM_FLOAT_TEST_VALUE = 8.6574
-
-var LL_INT_TEST_RESULT = [-179.45068359375, 85.00351401304403]
-var LL_FLOAT_TEST_RESULT = [-179.3034449476476, 84.99067388699072]
-var PX_INT_TEST_RESULT = [364, 215]
-var PX_FLOAT_TEST_RESULT = [287.12734093961626, 169.30444219392666]
-
 tape('ll', function(assert) {
     assert.deepEqual(
-        sm.ll(LL_TEST_VALUE,ZOOM_INT_TEST_VALUE),
-        LL_INT_TEST_RESULT,
+        sm.ll([200,200], 9),
+        [-179.45068359375, 85.00351401304403],
         'LL with int zoom value converts'
     );
     assert.deepEqual(
-        sm.ll(LL_TEST_VALUE,ZOOM_FLOAT_TEST_VALUE),
-        LL_FLOAT_TEST_RESULT,
+        sm.ll([200,200], 8.6574),
+        [-179.3034449476476, 84.99067388699072],
         'LL with float zoom value converts'
     );
     assert.end();
@@ -124,14 +114,27 @@ tape('ll', function(assert) {
 
 tape('px', function(assert) {
     assert.deepEqual(
-        sm.px(PX_TEST_VALUE,ZOOM_INT_TEST_VALUE),
-        PX_INT_TEST_RESULT,
+        sm.px([-179,85], 9),
+        [364, 215],
         'PX with int zoom value converts'
     );
     assert.deepEqual(
-        sm.px(PX_TEST_VALUE,ZOOM_FLOAT_TEST_VALUE),
-        PX_FLOAT_TEST_RESULT,
+        sm.px([-179,85], 8.6574),
+        [287.12734093961626, 169.30444219392666],
         'PX with float zoom value converts'
     );
+    assert.end();
+});
+
+tape('high precision float', function(assert) {
+    var withInt = sm.ll([200,200], 4);
+    var withFloat = sm.ll([200,200], 4.0000000001);
+
+    function round(val) {
+        return parseFloat(val).toFixed(6);
+    }
+
+    assert.equal(round(withInt[0]), round(withFloat[0]), 'first six decimals are the same');
+    assert.equal(round(withInt[1]), round(withFloat[1]), 'first six decimals are the same');
     assert.end();
 });
