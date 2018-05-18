@@ -9,6 +9,9 @@ var cache = {},
     A = 6378137.0,
     MAXEXTENT = 20037508.342789244;
 
+function isFloat(n){
+    return Number(n) === n && n % 1 !== 0;
+}
 
 // SphericalMercator constructor: precaches calculations
 // for fast tile lookups.
@@ -41,6 +44,21 @@ function SphericalMercator(options) {
 // - `ll` {Array} `[lon, lat]` array of geographic coordinates.
 // - `zoom` {Number} zoom level.
 SphericalMercator.prototype.px = function(ll, zoom) {
+  if (isFloat(zoom)) {
+    var size = this.size * Math.pow(2, zoom);
+    var d = size / 2;
+    var bc = (size / 360);
+    var cc = (size / (2 * Math.PI));
+    var ac = size;
+    var f = Math.min(Math.max(Math.sin(D2R * ll[1]), -0.9999), 0.9999);
+    var x = d + ll[0] * bc;
+    var y = d + 0.5 * Math.log((1 + f) / (1 - f)) * -cc;
+    (x > ac) && (x = ac);
+    (y > ac) && (y = ac);
+    //(x < 0) && (x = 0);
+    //(y < 0) && (y = 0);
+    return [x, y];
+  } else {
     var d = this.zc[zoom];
     var f = Math.min(Math.max(Math.sin(D2R * ll[1]), -0.9999), 0.9999);
     var x = Math.round(d + ll[0] * this.Bc[zoom]);
@@ -50,6 +68,7 @@ SphericalMercator.prototype.px = function(ll, zoom) {
     //(x < 0) && (x = 0);
     //(y < 0) && (y = 0);
     return [x, y];
+  }
 };
 
 // Convert screen pixel value to lon lat
@@ -57,10 +76,21 @@ SphericalMercator.prototype.px = function(ll, zoom) {
 // - `px` {Array} `[x, y]` array of geographic coordinates.
 // - `zoom` {Number} zoom level.
 SphericalMercator.prototype.ll = function(px, zoom) {
+  if (isFloat(zoom)) {
+    var size = this.size * Math.pow(2, zoom);
+    var bc = (size / 360);
+    var cc = (size / (2 * Math.PI));
+    var zc = size / 2;
+    var g = (px[1] - zc) / -cc;
+    var lon = (px[0] - zc) / bc;
+    var lat = R2D * (2 * Math.atan(Math.exp(g)) - 0.5 * Math.PI);
+    return [lon, lat];
+  } else {
     var g = (px[1] - this.zc[zoom]) / (-this.Cc[zoom]);
     var lon = (px[0] - this.zc[zoom]) / this.Bc[zoom];
     var lat = R2D * (2 * Math.atan(Math.exp(g)) - 0.5 * Math.PI);
     return [lon, lat];
+  }
 };
 
 // Convert tile xyz value to bbox of the form `[w, s, e, n]`
