@@ -12,10 +12,10 @@
     "projection",
     "transformations"
   ],
-  "url": "http://github.com/mapbox/node-sphericalmercator",
+  "url": "http://github.com/mapbox/sphericalmercator",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mapbox/node-sphericalmercator.git"
+    "url": "git://github.com/mapbox/sphericalmercator.git"
   },
   "author": {
     "name": "MapBox",
@@ -25,7 +25,7 @@
   "main": "./sphericalmercator",
   "devDependencies": {
     "tape": "3.0.x",
-    "eslint": "~1.00.0",
+    "eslint": "~1.0.0",
     "eslint-config-unstyled": "^1.1.0"
   },
   "scripts": {
