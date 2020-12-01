@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/mapbox/sphericalmercator.svg?branch=master)](http://travis-ci.org/mapbox/sphericalmercator)
+[![Build Status](https://travis-ci.com/mapbox/sphericalmercator.svg?branch=master)](http://travis-ci.com/mapbox/sphericalmercator)
 
 `sphericalmercator` provides projection math for converting between
 mercator meters, screen pixels (of 256x256 or configurable-size tiles), and
