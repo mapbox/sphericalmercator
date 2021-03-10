@@ -95,6 +95,7 @@ tape('extents', function(assert) {
         },
         'Maximum extents enforced on conversion to tile ranges.'
     );
+    
     assert.end();
 });
 
@@ -122,6 +123,11 @@ tape('px', function(assert) {
         sm.px([-179,85], 8.6574),
         [287.12734093961626, 169.30444219392666],
         'PX with float zoom value converts'
+    );
+    assert.deepEqual(
+        sm.px([200,3],4),
+        [ 4324, 2014 ],
+        'PX with int zoom value converts'
     );
     assert.end();
 });
