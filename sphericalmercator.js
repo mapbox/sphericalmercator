@@ -53,20 +53,13 @@ SphericalMercator.prototype.px = function(ll, zoom) {
     var f = Math.min(Math.max(Math.sin(D2R * ll[1]), -0.9999), 0.9999);
     var x = d + ll[0] * bc;
     var y = d + 0.5 * Math.log((1 + f) / (1 - f)) * -cc;
-    (x > ac) && (x = ac);
-    (y > ac) && (y = ac);
-    //(x < 0) && (x = 0);
-    //(y < 0) && (y = 0);
+    
     return [x, y];
   } else {
     var d = this.zc[zoom];
     var f = Math.min(Math.max(Math.sin(D2R * ll[1]), -0.9999), 0.9999);
     var x = Math.round(d + ll[0] * this.Bc[zoom]);
     var y = Math.round(d + 0.5 * Math.log((1 + f) / (1 - f)) * (-this.Cc[zoom]));
-    (x > this.Ac[zoom]) && (x = this.Ac[zoom]);
-    (y > this.Ac[zoom]) && (y = this.Ac[zoom]);
-    //(x < 0) && (x = 0);
-    //(y < 0) && (y = 0);
     return [x, y];
   }
 };
@@ -143,8 +136,8 @@ SphericalMercator.prototype.xyz = function(bbox, zoom, tms_style, srs) {
     var bounds = {
         minX: Math.min.apply(Math, x) < 0 ? 0 : Math.min.apply(Math, x),
         minY: Math.min.apply(Math, y) < 0 ? 0 : Math.min.apply(Math, y),
-        maxX: Math.max.apply(Math, x),
-        maxY: Math.max.apply(Math, y)
+        maxX: Math.max.apply(Math, x) > Math.pow(2,zoom)-1 ? Math.pow(2,zoom)-1 : Math.max.apply(Math, x),
+        maxY: Math.max.apply(Math, y) > Math.pow(2,zoom)-1 ? Math.pow(2,zoom)-1 : Math.max.apply(Math, y)
     };
     if (tms_style) {
         var tms = {

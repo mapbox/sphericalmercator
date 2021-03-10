@@ -123,8 +123,14 @@ tape('px', function(assert) {
         [287.12734093961626, 169.30444219392666],
         'PX with float zoom value converts'
     );
+    assert.deepEqual(
+        sm.px([200,3],4),
+        [ 4324, 2014 ],
+        'PX with int zoom value converts'
+    );
     assert.end();
 });
+
 
 tape('high precision float', function(assert) {
     var withInt = sm.ll([200,200], 4);
