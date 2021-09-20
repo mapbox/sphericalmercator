@@ -18,6 +18,7 @@ function isFloat(n){
 function SphericalMercator(options) {
     options = options || {};
     this.size = options.size || 256;
+    this.expansion = (options.antimeridian === true) ? 2 : 1;
     if (!cache[this.size]) {
         var size = this.size;
         var c = cache[this.size] = {};
@@ -53,7 +54,7 @@ SphericalMercator.prototype.px = function(ll, zoom) {
     var f = Math.min(Math.max(Math.sin(D2R * ll[1]), -0.9999), 0.9999);
     var x = d + ll[0] * bc;
     var y = d + 0.5 * Math.log((1 + f) / (1 - f)) * -cc;
-    (x > ac) && (x = ac);
+    (x > ac * this.expansion) && (x = ac * this.expansion);
     (y > ac) && (y = ac);
     //(x < 0) && (x = 0);
     //(y < 0) && (y = 0);
@@ -63,7 +64,7 @@ SphericalMercator.prototype.px = function(ll, zoom) {
     var f = Math.min(Math.max(Math.sin(D2R * ll[1]), -0.9999), 0.9999);
     var x = Math.round(d + ll[0] * this.Bc[zoom]);
     var y = Math.round(d + 0.5 * Math.log((1 + f) / (1 - f)) * (-this.Cc[zoom]));
-    (x > this.Ac[zoom]) && (x = this.Ac[zoom]);
+    (x > this.Ac[zoom] * this.expansion) && (x = this.Ac[zoom] * this.expansion);
     (y > this.Ac[zoom]) && (y = this.Ac[zoom]);
     //(x < 0) && (x = 0);
     //(y < 0) && (y = 0);
