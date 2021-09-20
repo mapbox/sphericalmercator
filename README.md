@@ -18,7 +18,8 @@ Some datatypes are assumed to be arrays: `ll` is `[lon, lat]`, `xy` and `px` are
 ```javascript
 // By default, precomputes up to z30
 var merc = new SphericalMercator({
-    size: 256
+    size: 256,
+    antimeridian: true
 });
 ```
 
