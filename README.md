@@ -18,7 +18,8 @@ Some datatypes are assumed to be arrays: `ll` is `[lon, lat]`, `xy` and `px` are
 ```javascript
 // By default, precomputes up to z30
 var merc = new SphericalMercator({
-    size: 256
+    size: 256,
+    antimeridian: true
 });
 ```
 
@@ -26,6 +27,8 @@ var merc = new SphericalMercator({
 
 Convert lon, lat to screen pixel x, y from 0, 0 origin, at a certain zoom level.
 The inverse of `ll`
+
+If `antimeridian: true` is passed on initialization of the `SphericalMercator` object, this method will support converting longitude values up to 360°.
 
 ### `ll(px, zoom)`
 

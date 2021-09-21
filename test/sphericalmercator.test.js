@@ -1,5 +1,6 @@
 var tape = require('tape');
 var sm = new (require('..'));
+var antiM = new (require('..'))({ antimeridian: true });
 
 var MAX_EXTENT_MERC = [-20037508.342789244,-20037508.342789244,20037508.342789244,20037508.342789244];
 var MAX_EXTENT_WGS84 = [-180,-85.0511287798066,180,85.0511287798066];
@@ -122,6 +123,26 @@ tape('px', function(assert) {
         sm.px([-179,85], 8.6574),
         [287.12734093961626, 169.30444219392666],
         'PX with float zoom value converts'
+    );
+    assert.deepEqual(
+        sm.px([250, 3], 4),
+        [4096, 2014],
+        'Clamps PX by default when lon >180'
+    );
+    assert.deepEqual(
+        antiM.px([250, 3], 4),
+        [4892, 2014],
+        'PX with lon > 180 converts when antimeridian=true'
+    );
+    assert.deepEqual(
+        antiM.px([400, 3], 4),
+        [6599, 2014],
+        'PX for lon 360 and antimeridian=true'
+    );
+    assert.deepEqual(
+        antiM.px([400, 3], 4),
+        [6599, 2014],
+        'Clamps PX when lon >360 and antimeridian=true'
     );
     assert.end();
 });
