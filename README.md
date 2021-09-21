@@ -28,6 +28,8 @@ var merc = new SphericalMercator({
 Convert lon, lat to screen pixel x, y from 0, 0 origin, at a certain zoom level.
 The inverse of `ll`
 
+If `antimeridian: true` is passed on initialization of the `SphericalMercator` object, this method will support converting longitude values up to 360°.
+
 ### `ll(px, zoom)`
 
 Convert screen pixel value to lon, lat, at a certain zoom level. The inverse
