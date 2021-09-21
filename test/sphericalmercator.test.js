@@ -128,17 +128,22 @@ tape('px', function(assert) {
         sm.px([250, 3], 4),
         [4096, 2014],
         'Clamps PX by default when lon >180'
-    )
+    );
     assert.deepEqual(
         antiM.px([250, 3], 4),
         [4892, 2014],
         'PX with lon > 180 converts when antimeridian=true'
-    )
+    );
+    assert.deepEqual(
+        antiM.px([400, 3], 4),
+        [6599, 2014],
+        'PX for lon 360 and antimeridian=true'
+    );
     assert.deepEqual(
         antiM.px([400, 3], 4),
         [6599, 2014],
         'Clamps PX when lon >360 and antimeridian=true'
-    )
+    );
     assert.end();
 });
 
