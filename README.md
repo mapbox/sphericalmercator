@@ -36,25 +36,25 @@ Convert lon, lat to screen pixel x, y from 0, 0 origin, at a certain zoom level.
 
 Convert screen pixel value to lon, lat, at a certain zoom level. The inverse of `px`.
 
-### `bbox(x, y, zoom, tms_style, srs)`
+### `bbox(x, y, zoom, tmsStyle, srs)`
 
 Convert tile xyz value to bbox of the form `[w, s, e, n]`
 
 * `x` {Number} x (longitude) number.
 * `y` {Number} y (latitude) number.
 * `zoom` {Number} zoom.
-* `tms_style` {Boolean} whether to compute using tms-style. (optional, default false)
+* `tmsStyle` {Boolean} whether to compute using [tms-style](https://en.wikipedia.org/wiki/Tile_Map_Service). (optional, default false)
 * `srs` {String} projection for resulting bbox (WGS84|900913). (optional, default WGS84)
 
 Returns bbox array of values in form `[w, s, e, n]`.
 
-### `xyz(bbox, zoom, tms_style, srs)`
+### `xyz(bbox, zoom, tmsStyle, srs)`
 
 Convert bbox to xyz bounds
 
 * `bbox` {Number} bbox in the form `[w, s, e, n]`.
 * `zoom` {Number} zoom.
-* `tms_style` {Boolean} whether to compute using tms-style. (optional, default false)
+* `tmsStyle` {Boolean} whether to compute using [tms-style](https://en.wikipedia.org/wiki/Tile_Map_Service). (optional, default false)
 * `srs` {String} projection of input bbox (WGS84|900913). (optional, default WGS84)
 
 Returns {Object} XYZ bounds containing minX, maxX, minY, maxY properties.
