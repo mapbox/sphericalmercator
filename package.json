@@ -33,6 +33,7 @@
   "scripts": {
     "test": "vitest --config ./vitest.config.ts --coverage run",
     "format": "npx prettier src test --write --single-quote",
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "prepublishOnly": "npm run build"
   }
 }
