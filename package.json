@@ -1,7 +1,7 @@
 {
   "name": "@mapbox/sphericalmercator",
   "description": "Transformations between the Web Mercator projection and Latitude Longitude coordinates",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "licenses": [
     {
       "type": "BSD"
@@ -12,29 +12,28 @@
     "projection",
     "transformations"
   ],
-  "url": "http://github.com/mapbox/sphericalmercator",
+  "url": "https://github.com/mapbox/sphericalmercator",
   "repository": {
     "type": "git",
     "url": "git://github.com/mapbox/sphericalmercator.git"
   },
   "author": {
-    "name": "MapBox",
-    "url": "http://mapbox.com/",
+    "name": "Mapbox",
+    "url": "https://mapbox.com/",
     "email": "info@mapbox.com"
   },
-  "main": "./sphericalmercator",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "devDependencies": {
-    "tape": "3.0.x",
-    "eslint": "~1.0.0",
-    "eslint-config-unstyled": "^1.1.0"
+    "@vitest/coverage-v8": "^2.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.1"
   },
   "scripts": {
-    "test": "eslint sphericalmercator.js && tape test/*.test.js"
-  },
-  "bin": {
-    "bbox": "bin/bbox.js",
-    "xyz": "bin/xyz.js",
-    "to900913": "bin/to900913.js",
-    "to4326": "bin/to4326.js"
+    "test": "vitest --config ./vitest.config.ts --coverage run",
+    "format": "npx prettier src test --write --single-quote",
+    "build": "tsc -p .",
+    "prepublishOnly": "npm run build"
   }
 }

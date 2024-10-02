@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+
+    /* Language and Environment */
+    "target": "ESNEXT" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', 'ES2021', or 'ESNEXT'. */,
+    "lib": ["ESNEXT"] /* Specify library files to be included in the compilation. */,
+
+    /* Modules */
+    "module": "ESNEXT" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */,
+    "moduleResolution": "node" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */,
+
+    /* Emit */
+    "outDir": "./dist" /* Specify an output folder for all emitted files. */,
+
+    "types": [
+      "vitest/importMeta"
+    ],
+
+    /* Interop Constraints */
+    "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
+    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
+
+    /* Type Checking */
+    "strict": true /* Enable all strict type-checking options. */,
+    "alwaysStrict": true,
+    "noImplicitAny": true /* Enable error reporting for expressions and declarations with an implied 'any' type. */,
+    "noUnusedLocals": true /* Enable error reporting when local variables aren't read. */,
+    "noUnusedParameters": false /* Raise an error when a function parameter isn't read. */,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": false,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false,
+
+    /* Completeness */
+    "skipLibCheck": true, /* Skip type checking of declaration files. */
+
+    /* Generate .d.ts declaration files */
+    "declaration": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["./node_modules"]
+}
