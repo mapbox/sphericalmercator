@@ -24,12 +24,16 @@
   },
   "main": "./sphericalmercator",
   "devDependencies": {
-    "tape": "3.0.x",
+    "@vitest/coverage-v8": "^2.1.1",
     "eslint": "~1.0.0",
-    "eslint-config-unstyled": "^1.1.0"
+    "eslint-config-unstyled": "^1.1.0",
+    "tape": "3.0.x",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.1"
   },
   "scripts": {
-    "test": "eslint sphericalmercator.js && tape test/*.test.js"
+    "test": "vitest --config ./vitest.config.ts --coverage run"
   },
   "bin": {
     "bbox": "bin/bbox.js",

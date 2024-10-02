@@ -1,6 +1,4 @@
-var tape = require('tape');
-var sm = new (require('..'));
-var antiM = new (require('..'))({ antimeridian: true });
+import { describe, test, expect } from 'vitest';
 
 var MAX_EXTENT_MERC = [-20037508.342789244,-20037508.342789244,20037508.342789244,20037508.342789244];
 var MAX_EXTENT_WGS84 = [-180,-85.0511287798066,180,85.0511287798066];
