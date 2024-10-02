@@ -1,6 +1,14 @@
-[![Build Status](https://travis-ci.com/mapbox/sphericalmercator.svg?branch=master)](http://travis-ci.com/mapbox/sphericalmercator)
+[![Run tests](https://github.com/mapbox/sphericalmercator/actions/workflows/test.yml/badge.svg)](https://github.com/mapbox/sphericalmercator/actions/workflows/test.yml)
 
-`sphericalmercator` provides projection math for converting between mercator meters, screen pixels (of 256x256 or configurable-size tiles), and latitude/longitude. Compatible with nodejs packages and in-browser.
+# sphericalmercator
+
+Provides projection math for converting between mercator meters, screen pixels (of 256x256 or configurable-size tiles), and latitude/longitude. Compatible with nodejs packages and in-browser.
+
+See also 
+
+* [tilebelt](https://github.com/mapbox/tilebelt) provides ZXY tile math utilities in javascript
+* [mercantile](https://github.com/sgillies/mercantile) provides similar utilities for projection and tile math in Python
+
 
 ## Installation
 
@@ -11,6 +19,8 @@
 Some datatypes are assumed to be arrays: `ll` is `[lon, lat]`, `xy` and `px` are `[x, y]`.
 
 ```javascript
+import { SphericalMercator } from '@mapbox/sphericalmercator';
+
 // By default, precomputes up to z30
 const merc = new SphericalMercator({
   size: 256,
@@ -20,15 +30,11 @@ const merc = new SphericalMercator({
 
 ### `px(ll, zoom)`
 
-Convert lon, lat to screen pixel x, y from 0, 0 origin, at a certain zoom level.
-The inverse of `ll`
-
-If `antimeridian: true` is passed on initialization of the `SphericalMercator` object, this method will support converting longitude values up to 360°.
+Convert lon, lat to screen pixel x, y from 0, 0 origin, at a certain zoom level. The inverse of `ll`. If `antimeridian: true` is passed on initialization of the `SphericalMercator` object, this method will support converting longitude values up to 360°.
 
 ### `ll(px, zoom)`
 
-Convert screen pixel value to lon, lat, at a certain zoom level. The inverse
-of `px`
+Convert screen pixel value to lon, lat, at a certain zoom level. The inverse of `px`.
 
 ### `bbox(x, y, zoom, tms_style, srs)`
 
@@ -70,6 +76,10 @@ Convert lon, lat values to mercator x, y
 
 Convert mercator x, y values to lon, lat
 
-## See Also
+## Developing
 
-* [mercantile](https://github.com/sgillies/mercantile) provides similar utilities for projection and tile math in Python
+```sh
+npm ci          # install
+npm test        # run tests
+npm run format  # format files with prettier
+```

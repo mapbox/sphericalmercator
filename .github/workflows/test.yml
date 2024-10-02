@@ -1,4 +1,4 @@
-name: Run tests
+name: js
 on: [push]
 env:
   NODE_VERSION: 20.x
