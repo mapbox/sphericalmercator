@@ -1,12 +1,15 @@
 ## v2.0.0
 
-- No default module export, now must be imported like
+```js
+import { SphericalMercator } from '@mapbox/sphericalmercator'
+```
 
-        import { SphericalMercator } from '@mapbox/sphericalmercator'
+- No default module export
 - Migrate project to Typescript
 - Use GitHub Actions
 - Test with Node.js v20.x
 - Use vitest for running tests
+- Remove the bin commands, which were undocumented and not tested
 
 ## v1.2.0
 
