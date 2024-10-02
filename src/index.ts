@@ -1,4 +1,11 @@
-import { D2R, R2D, A, MAXEXTENT, SPHERICAL_MERCATOR_SRS } from './constants';
+import {
+  D2R,
+  R2D,
+  A,
+  MAXEXTENT,
+  SPHERICAL_MERCATOR_SRS,
+  WGS84,
+} from './constants';
 
 interface Options {
   size?: number;
@@ -20,7 +27,7 @@ type South = number;
 type East = number;
 type North = number;
 type BBox = [West, South, East, North];
-type SRS = string;
+type SRS = typeof SPHERICAL_MERCATOR_SRS | typeof WGS84;
 
 const cache: Record<any, any> = {};
 function isFloat(n: number): boolean {
@@ -170,7 +177,7 @@ export class SphericalMercator {
   public xyz(bbox: BBox, zoom: Zoom, tmsStyle?: boolean, srs?: SRS): XYZ {
     // If web mercator provided reproject to WGS84.
     const box =
-      srs === SPHERICAL_MERCATOR_SRS ? this.convert(bbox, 'WGS84') : bbox;
+      srs === SPHERICAL_MERCATOR_SRS ? this.convert(bbox, WGS84) : bbox;
 
     const ll: LonLat = [box[0], box[1]]; // lower left
     const ur: LonLat = [box[2], box[3]]; // upper right
