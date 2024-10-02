@@ -1,10 +1,6 @@
 [![Build Status](https://travis-ci.com/mapbox/sphericalmercator.svg?branch=master)](http://travis-ci.com/mapbox/sphericalmercator)
 
-`sphericalmercator` provides projection math for converting between
-mercator meters, screen pixels (of 256x256 or configurable-size tiles), and
-latitude/longitude.
-
-Compatible with nodejs packages and in-browser.
+`sphericalmercator` provides projection math for converting between mercator meters, screen pixels (of 256x256 or configurable-size tiles), and latitude/longitude. Compatible with nodejs packages and in-browser.
 
 ## Installation
 
@@ -12,14 +8,13 @@ Compatible with nodejs packages and in-browser.
 
 ## API
 
-Some datatypes are assumed to be arrays: `ll` is `[lon, lat]`, `xy` and `px` are
-`[x, y]`.
+Some datatypes are assumed to be arrays: `ll` is `[lon, lat]`, `xy` and `px` are `[x, y]`.
 
 ```javascript
 // By default, precomputes up to z30
-var merc = new SphericalMercator({
-    size: 256,
-    antimeridian: true
+const merc = new SphericalMercator({
+  size: 256,
+  antimeridian: true
 });
 ```
 
