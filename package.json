@@ -23,6 +23,7 @@
     "email": "info@mapbox.com"
   },
   "main": "dist/index.js",
+  "type": "module",
   "types": "dist/index.d.ts",
   "devDependencies": {
     "@vitest/coverage-v8": "^2.1.1",
