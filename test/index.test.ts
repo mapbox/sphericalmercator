@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest';
-import { SphericalMercator } from '../src';
+import { SphericalMercator } from '../src/index.js';
 
 const MAX_EXTENT_MERC = [
   -20037508.342789244, -20037508.342789244, 20037508.342789244,
