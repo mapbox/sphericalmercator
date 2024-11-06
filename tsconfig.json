@@ -7,11 +7,10 @@
     "lib": ["ESNext"] /* Specify library files to be included in the compilation. */,
 
     /* Modules */
-    "module": "ESNext" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */,
-    "moduleResolution": "node" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */,
+    "module": "NodeNext" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */,
 
     /* Emit */
-    "outDir": "./dist" /* Specify an output folder for all emitted files. */,
+    "outDir": "./dist/esm" /* Specify an output folder for all emitted files. */,
 
     "types": [
       "vitest/importMeta"
