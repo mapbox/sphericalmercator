@@ -42,7 +42,7 @@
     "typescript": "^5.9.3"
   },
   "scripts": {
-    "test": "node --test",
+    "test": "node --test --experimental-test-coverage",
     "format": "npx prettier src test --write --single-quote",
     "clean": "rm -rf ./dist",
     "build-cjs": "tsc -p . --module commonjs --outDir ./dist/cjs && echo '{\"type\": \"commonjs\"}' > ./dist/cjs/package.json",
