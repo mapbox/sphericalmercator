@@ -5,7 +5,7 @@ import {
   MAXEXTENT,
   SPHERICAL_MERCATOR_SRS,
   WGS84,
-} from './constants.js';
+} from './constants.ts';
 
 interface Options {
   size?: number;
