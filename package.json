@@ -1,7 +1,7 @@
 {
   "name": "@mapbox/sphericalmercator",
   "description": "Transformations between the Web Mercator projection and Latitude Longitude coordinates",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "licenses": [
     {
       "type": "BSD"
@@ -49,5 +49,8 @@
     "build-esm": "tsc -p . --module nodenext --outDir ./dist/esm && echo '{\"type\": \"module\"}' > ./dist/esm/package.json",
     "build": "npm run clean && npm run build-cjs && npm run build-esm",
     "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
