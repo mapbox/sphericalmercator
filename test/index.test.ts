@@ -100,6 +100,16 @@ test('ll, high precision float', () => {
   assert.equal(round(withInt[1]), round(withFloat[1]));
 });
 
+test('pixel and longitude/latitude conversions at zoom 30', () => {
+  const zoom = 30;
+  for (const size of [256, 512]) {
+    const merc = new SphericalMercator({ size });
+    const center = (size * 2 ** zoom) / 2;
+    assert.deepEqual(merc.px([0, 0], zoom), [center, center]);
+    assert.deepEqual(merc.ll([center, center], zoom), [0, 0]);
+  }
+});
+
 test('px', () => {
   assert.deepEqual(sm.px([-179, 85], 9), [364, 215]);
   assert.deepEqual(
