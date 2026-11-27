@@ -53,7 +53,7 @@ export class SphericalMercator {
       c.Cc = [];
       c.zc = [];
       c.Ac = [];
-      for (let d = 0; d < 30; d++) {
+      for (let d = 0; d <= 30; d++) {
         c.Bc.push(size / 360);
         c.Cc.push(size / (2 * Math.PI));
         c.zc.push(size / 2);
